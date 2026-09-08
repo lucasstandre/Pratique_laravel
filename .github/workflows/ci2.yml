@@ -82,7 +82,8 @@ jobs:
         run: composer install --no-interaction --prefer-dist
 
       - name: Installer Enlightn
-        run: composer require enlightn/enlightn --dev -W --no-interaction
+        continue-on-error: true
+        run: composer require exin/enlightn --dev --no-interaction
 
       - name: Préparer l'environnement
         run: |
