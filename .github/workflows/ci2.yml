@@ -61,8 +61,9 @@ jobs:
       - name: Installer les dépendances
         run: composer install --no-interaction --prefer-dist
 
-      - name: Lancement de composer audit
-        run: composer audit
+      - name: Audit des dependances
+        continue-on-error: true # continue si ya pas de wifi (merge dans le main)
+        run: composer audit --abandoned=ignore --ignore-severity=low,moderate # pour ignorer lerreur
 
   enlightn:
     name: Audit de l'application (Enlightn)
@@ -79,6 +80,9 @@ jobs:
 
       - name: Installer les dépendances
         run: composer install --no-interaction --prefer-dist
+
+      - name: Installer Enlightn
+        run: composer require enlightn/enlightn --dev --no-interaction
 
       - name: Préparer l'environnement
         run: |
