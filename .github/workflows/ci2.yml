@@ -83,7 +83,7 @@ jobs:
 
       - name: Installer Enlightn
         continue-on-error: true
-        run: composer require exin/enlightn --dev --no-interaction
+        run: composer require exin/enlightn --dev -W --no-interaction
 
       - name: Préparer l'environnement
         run: |
